@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Dashboard</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        #welcomeMessage { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Task Dashboard</h1>
+        <div>
+            <span id="welcomeMessage"></span>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <hr>
+    <!-- The rest of your Task Management HTML/CSS/JS code from previous answers would go here -->
+    <p>Welcome to the main application area. All your CRUD operations, filters, and search functionality go below this line.</p>
+
+
+    <script>
+        // 6. Session Management: Verify session on dashboard load
+        // If the user is NOT logged in, redirect them back to the login page.
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        } else {
+            // Display a welcome message using stored info
+            const userEmail = sessionStorage.getItem('userEmail');
+            document.getElementById('welcomeMessage').textContent = `Welcome, ${userEmail}!`;
+        }
+
+        // Logout function
+        function logout() {
+            // Clear session storage data
+            sessionStorage.removeItem('isLoggedIn');
+            sessionStorage.removeItem('userEmail');
+            // Redirect to the login page
+            window.location.href = 'login.html';
+        }
+
+        // !!! Place your previous Vanilla JS CRUD & Filtering code here !!!
+        // (The massive <script> block from the first two answers)
+
+    </script>
+</body>
+</html>
